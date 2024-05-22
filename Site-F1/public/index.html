@@ -5,8 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>F1 | Página Inicial</title>
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/logof1.jpg">
+    <link rel="stylesheet" href="./css/inicial.css">
+    <link rel="icon" href="./assets/icon/f1-logo.webp">
     <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,17 +15,13 @@
         <div class="linha"></div>
         <nav class="navbar">
             <ul>
-                <li><a href="#">Início</a></li>
-                <li><a href="#">Últimas Notícias</a></li>
-                <li><a href="#">Principais Pilotos</a></li>
-                <li><a href="#">Corridas</a></li>
-                <li>
-                    <select id="selecionar">
-                        <option value="" disabled selected>Selecione uma corrida</option>
-                        <option value="1">GP</option>
-                        <option value="2">Mônaco</option>
-                    </select>
-                </li>
+                <li><a class="inicio" href="./index.html" class="transicao">Início</a></li>
+                <li><a class="inicio" href="#">Últimas Notícias</a></li>
+                <li><a class="inicio" href="#">Principais Pilotos</a></li>
+                <li><a class="inicio" href="#">Corridas</a></li>
+                <li><a class="inicio" href="#">Sobre o autor</a></li>
+             
+
             </ul>
         </nav>
         <div class="cadastro-login">
@@ -33,7 +29,35 @@
             <a class="login" href="./login.html">LOGIN</a>
         </div>
     </header>
-    <hr class="linha-header">
+    
+
+
+    <div class="banner">
+        <div class="container">
+          <p class="slogan">Acelerando Informação com a Paixão da Fórmula 1: Onde a Adrenalina e a Notícia se Encontram</p>
+        </div>
+      </div>
+    
+    
+      <div class="social">
+        <div class="container">
+          <div class="boxes">
+            <div class="box">
+              
+              <h4>McLaren homenageará Senna com carro verde e amarelo no GP de Mônaco</h4>
+              <img class="senna" src="./imagens/senna.avif">
+              <p class="texto-noticia">Nos 30 anos da morte de Ayrton Senna, a McLaren terá uma grande homenagem ao ídolo brasileiro. A equipe inglesa deixará o laranja do carro de lado para receber as cores da bandeira do Brasil no Grande Prêmio de Mônaco, no próximo domingo.</p>
+            </div>
+            <div class="box">
+             
+              <h4>Verstappen teve performances que vão ficar para carreira</h4>
+              <img class="verstapen" src="./imagens/verstapen.jpg">
+              <p class="texto-noticia">Max Verstappen caminha para alcançar mais uma importante marca na F1. Caso lidere ao menos uma volta do GP de Mônaco deste final de semana, o holandês iguala Michael Schumacher na terceira posição de pilotos com mais provas consecutivas na liderança.</p>
+            </div>
+            
+          </div>
+        </div>
+      </div>
     
 
 </body>
