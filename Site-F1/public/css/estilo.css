@@ -10,7 +10,13 @@ body {
   padding: 0;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #02021b;
+  background-image: url('../imagens/fundof1.jpg');
 }
+
+.quiz{
+  background-image: url(../imagens/fundo-largada.jpg);
+}
+
 
 :root {
   --tamanho-header: 80px;
@@ -25,6 +31,7 @@ body {
   width: 80%;
   margin: auto;
   margin-top: 50px;
+  
 }
 
 .header {
@@ -82,6 +89,8 @@ body {
 
 .cadastro-login {
   margin-right: 20px;
+  
+  
   
 }
 
@@ -416,6 +425,113 @@ input {
   background-image: url('https://cdn-icons-png.flaticon.com/512/1157/1157000.png');
   background-size: cover;
   animation-iteration-count: infinite;
+}
+
+
+.autor-container {
+  padding: 20px;
+  text-align: center;
+  
+  border-radius: 10px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.497);
+  border: 2px solid;
+}
+
+.autor-container h2 {
+  color: #ffffff;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.autor-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  text-align: left;
+}
+
+.autor-foto {
+  border-radius: 10px;
+  width: 200px;
+  height: auto;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease;
+  border: 2px solid white;
+  
+}
+
+.autor-info {
+  max-width: 600px;
+  margin: 20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.autor-info h3 {
+  color: #02021b;
+  margin-bottom: 10px;
+}
+
+.autor-info p {
+  color: #333;
+  margin: 10px 0;
+}
+
+
+.quiz-container {
+  margin: 100px auto 50px auto;
+  padding: 20px;
+  max-width: 800px;
+  background-color: #1c1c3c;
+  border-radius: 10px;
+ 
+}
+
+.quiz-container h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: white;
+}
+
+.quiz-question {
+  margin-bottom: 20px;
+}
+
+.quiz-question p {
+  margin-bottom: 10px;
+  color: wheat;
+}
+
+.quiz-question label {
+  display: block;
+  margin-bottom: 5px;
+  color: white;
+}
+
+.quiz-question input[type="radio"] {
+  margin-right: 10px;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 5px;
+  color: #02021b;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #e2b607;
 }
 
 @keyframes bell {

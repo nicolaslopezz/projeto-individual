@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 | Quiz</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/inicial.css">
+    <link rel="icon" href="../assets/icon/f1-logo.webp">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <body class="quiz"> 
+        <header class="header">
+            <img class="logo" src="../imagens/logo2.png" alt="Logo F1">
+            <div class="linha"></div>
+            <nav class="navbar">
+                <ul>
+                    <li><a class="inicio" href="../index.html" class="transicao">Início</a></li>
+                    <li><a class="inicio" href="#">Últimas Notícias</a></li>
+                    <li><a class="inicio" href="../pilotos.html">Principais Pilotos</a></li>
+                    <li><a class="inicio" href="../corridas.html">Corridas</a></li>
+                    <li><a class="inicio" href="../sobremim.html">Sobre o autor</a></li>
+                 
+    
+                </ul>
+            </nav>
+            <div class="cadastro-login">
+                <a class="cadastro" href="./cadastro.html">CADASTRAR-SE</a>
+                <a class="login" href="./login.html">LOGIN</a>
+            </div>
+    </header>
+    <hr class="linha-header">
+
+    <main class="quiz-container">
+        <h1>Vamos testar seus conhecimentos?</h1>
+        <form id="quiz-form">
+            <div class="quiz-question">
+                <p>1. Qual equipe venceu o campeonato de construtores em 2023?</p>
+                <label><input type="radio" name="q1" value="Red Bull"> Red Bull</label>
+                <label><input type="radio" name="q1" value="Mercedes"> Mercedes</label>
+                <label><input type="radio" name="q1" value="Ferrari"> Ferrari</label>
+                <label><input type="radio" name="q1" value="McLaren"> McLaren</label>
+            </div>
+            <div class="quiz-question">
+                <p>2. Quem foi o piloto campeão de 2023?</p>
+                <label><input type="radio" name="q2" value="Max Verstappen"> Max Verstappen</label>
+                <label><input type="radio" name="q2" value="Lewis Hamilton"> Lewis Hamilton</label>
+                <label><input type="radio" name="q2" value="Charles Leclerc"> Charles Leclerc</label>
+                <label><input type="radio" name="q2" value="Sergio Perez"> Sergio Perez</label>
+            </div>
+            <div class="quiz-question">
+                <p>3. Em que ano foi realizado o primeiro GP de Mônaco?</p>
+                <label><input type="radio" name="q3" value="1929"> 1929</label>
+                <label><input type="radio" name="q3" value="1930"> 1930</label>
+                <label><input type="radio" name="q3" value="1931"> 1931</label>
+                <label><input type="radio" name="q3" value="1932"> 1932</label>
+            </div>
+            <div class="quiz-question">
+                <p>4. Qual o circuito mais longo da temporada de F1?</p>
+                <label><input type="radio" name="q4" value="Spa-Francorchamps"> Spa-Francorchamps</label>
+                <label><input type="radio" name="q4" value="Silverstone"> Silverstone</label>
+                <label><input type="radio" name="q4" value="Monza"> Monza</label>
+                <label><input type="radio" name="q4" value="Suzuka"> Suzuka</label>
+            </div>
+            <div class="quiz-question">
+                <p>5. Quem tem o maior número de pole positions na F1?</p>
+                <label><input type="radio" name="q5" value="Lewis Hamilton"> Lewis Hamilton</label>
+                <label><input type="radio" name="q5" value="Michael Schumacher"> Michael Schumacher</label>
+                <label><input type="radio" name="q5" value="Ayrton Senna"> Ayrton Senna</label>
+                <label><input type="radio" name="q5" value="Sebastian Vettel"> Sebastian Vettel</label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="result"></div>
+    </main>
+</body>
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('quiz-form');
+    const resultDiv = document.getElementById('result');
+
+    const respostasCorretas = {
+        q1: "Red Bull",
+        q2: "Max Verstappen",
+        q3: "1929",
+        q4: "Spa-Francorchamps",
+        q5: "Lewis Hamilton"
+    };
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); 
+
+        const formData = new FormData(form);
+        let pontuacao = 0;
+
+        formData.forEach((value, key) => {
+            if (value === respostasCorretas[key]) {
+                pontuacao++;
+            }
+        });
+
+        resultDiv.textContent = `Você acertou ${pontuacao} de ${Object.keys(respostasCorretas).length} perguntas.`;
+    });
+});
+
+</script>
