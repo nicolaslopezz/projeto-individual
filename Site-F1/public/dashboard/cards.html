@@ -20,7 +20,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), exibirAquarios(),  atualizacaoPeriodica()">
+<body >
 
     <div class="janela">
 
@@ -33,10 +33,7 @@
               
             </div>
 
-            <div class="hello">
-                <h3>Olá, <span id="b_cpf">cpf</span>!</h3>
-              
-            </div>
+          
 
             <div class="btn-nav">
                 <h3>Aquários</h3>
@@ -60,38 +57,52 @@
 
         </div>
 
-        <div class="dash">
-            <div id="alerta">
-            </div>
-            <div class="area-parametros-alerta">
-                <p class="titulo-legenda">
-                    Legenda - Parâmetros para Alertas
-                </p>
-                <div class="parametros-alerta">
-                    <div class="item-regua perigo-frio">
-                        <p>Perigo</p>
-                        <p>&lt;=5°C</p>
-                    </div>
-                    <div class="item-regua alerta-frio">
-                        <p>Alerta</p>
-                        <p>&lt;=10°C</p>
-                    </div>
-                    <div class="item-regua ideal">
-                        <p>Ideal</p>
-                        <p>20°C</p>
-                    </div>
-                    <div class="item-regua alerta-quente">
-                        <p>Alerta</p>
-                        <p>&gt;=22°C</p>
-                    </div>
-                    <div class="item-regua perigo-quente">
-                        <p>Perigo</p>
-                        <p>&gt;=23°C</p>
-                    </div>
-                </div>
+        
+                <main class="quiz-container">
+                    <h1>Vamos testar seus conhecimentos?</h1>
+                    <form id="quiz-form">
+                        <div class="quiz-question">
+                            <p>1. Qual equipe venceu o campeonato de construtores em 2023?</p>
+                            <label><input type="radio" name="q1" value="Red Bull"> Red Bull</label>
+                            <label><input type="radio" name="q1" value="Mercedes"> Mercedes</label>
+                            <label><input type="radio" name="q1" value="Ferrari"> Ferrari</label>
+                            <label><input type="radio" name="q1" value="McLaren"> McLaren</label>
+                        </div>
+                        <div class="quiz-question">
+                            <p>2. Quem foi o piloto campeão de 2023?</p>
+                            <label><input type="radio" name="q2" value="Max Verstappen"> Max Verstappen</label>
+                            <label><input type="radio" name="q2" value="Lewis Hamilton"> Lewis Hamilton</label>
+                            <label><input type="radio" name="q2" value="Charles Leclerc"> Charles Leclerc</label>
+                            <label><input type="radio" name="q2" value="Sergio Perez"> Sergio Perez</label>
+                        </div>
+                        <div class="quiz-question">
+                            <p>3. Em que ano foi realizado o primeiro GP de Mônaco?</p>
+                            <label><input type="radio" name="q3" value="1929"> 1929</label>
+                            <label><input type="radio" name="q3" value="1930"> 1930</label>
+                            <label><input type="radio" name="q3" value="1931"> 1931</label>
+                            <label><input type="radio" name="q3" value="1932"> 1932</label>
+                        </div>
+                        <div class="quiz-question">
+                            <p>4. Qual o circuito mais longo da temporada de F1?</p>
+                            <label><input type="radio" name="q4" value="Spa-Francorchamps"> Spa-Francorchamps</label>
+                            <label><input type="radio" name="q4" value="Silverstone"> Silverstone</label>
+                            <label><input type="radio" name="q4" value="Monza"> Monza</label>
+                            <label><input type="radio" name="q4" value="Suzuka"> Suzuka</label>
+                        </div>
+                        <div class="quiz-question">
+                            <p>5. Quem tem o maior número de pole positions na F1?</p>
+                            <label><input type="radio" name="q5" value="Lewis Hamilton"> Lewis Hamilton</label>
+                            <label><input type="radio" name="q5" value="Michael Schumacher"> Michael Schumacher</label>
+                            <label><input type="radio" name="q5" value="Ayrton Senna"> Ayrton Senna</label>
+                            <label><input type="radio" name="q5" value="Sebastian Vettel"> Sebastian Vettel</label>
+                        </div>
+                        <button type="submit" >Enviar</button>
+                    </form>
+                    <div id="result"></div>
+                </main>
             </div>
 
-            <div class="cards" id="cardAquarios">
+            <div class="cards" id="resultado">
 
             </div>
 
@@ -99,27 +110,57 @@
 
     </div>
 
+    
+
 </body>
 
 <script>
 
-    function exibirAquarios() {
-        JSON.parse(sessionStorage.AQUARIOS).forEach(item => {
-            document.getElementById("cardAquarios").innerHTML += `
-                    <div class="card-aquario">
-                        <div class="title-aquario">
-                            <h1>${item.descricao}</h1>
-                        </div>
-                        <div class="desc-aquario">
-                        <div class="temperatura">
-                            <p id="temp_aquario_${item.id}">-°C</p>
-                        </div>
-                        <div class="cor-alerta" id="card_${item.id}"></div>
-                    </div>
-                    </div>
-                    `
+var pontuacao = 0
+
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById('quiz-form');
+    const resultDiv = document.getElementById('result');
+    
+    const respostasCorretas = {
+        q1: "Red Bull",
+        q2: "Max Verstappen",
+        q3: "1929",
+        q4: "Spa-Francorchamps",
+        q5: "Lewis Hamilton"
+    };
+
+    form.addEventListener('submit', function (event) {
+        event.preventDefault(); 
+
+        const formData = new FormData(form);
+
+        formData.forEach((value, key) => {
+            if (value === respostasCorretas[key]) {
+                pontuacao++;
+            }
         });
-    }
+        
+    resultado.innerHTML = "QUIZ RESPONDIDO, PARABÉNS"
+
+        fetch("/quiz/cadastrar_resposta", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+    }, 
+    body: JSON.stringify({
+     resposta: pontuacao,
+     idUsuario: sessionStorage.ID_USUARIO   
+    }),
+ })
+    });
+    
+},
+pontuacao = 0);
+
+
+
+
 
 </script>
 
