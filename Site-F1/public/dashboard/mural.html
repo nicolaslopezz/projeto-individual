@@ -21,39 +21,34 @@
 
 <body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
 
-    <div class="janela">
-
-
-        <div class="header-left">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="cards.html">
-                    <h3>Aquários</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav">
-                <h3>Mural de Avisos</h3>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+   
+    <div class="sidebar" id="sidebar">
+        <h1>Bem vindo, fã de F1</h1>
+        <div class="btn-nav1">
+            <a href="./cards.html">
+            <h3>Teste de conhecimento</h3>
+        </a>
         </div>
+        <div class="btn-nav-white">
+            <a href="./dashboard.html">
+                <h3>Resultados</h3>
+            </a>
+        </div>
+        <div class="btn-nav-white">
+            <a href="./mural.html">
+                <h3>Game-F1</h3>
+            </a>
+        </div>
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
+    </div>
 
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
         <div class="dash-right">
 
 
@@ -173,6 +168,12 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
+
+    function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
 
     function atualizarFeed() {
         fetch("/avisos/listar").then(function (resposta) {

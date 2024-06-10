@@ -69,17 +69,61 @@
 <body onload="chamar_graficos(), timeout">
 
 
+  <div class="sidebar" id="sidebar">
+    <h1>Bem vindo, fã de F1</h1>
+    <div class="btn-nav1">
+      <a href="./cards.html">
+        <h3>Teste de conhecimento</h3>
+      </a>
+    </div>
+    <div class="btn-nav-white">
+        <a href="./dashboard.html">
+            <h3>Resultados</h3>
+        </a>
+    </div>
+    <div class="btn-nav-white">
+        <a href="./mural.html">
+            <h3>Game-F1</h3>
+        </a>
+    </div>
+    <div class="btn-logout" onclick="limparSessao()">
+        <h3>Sair</h3>
+    </div>
+</div>
+
+<div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+</div>
+
 
 
   <div id="grafico">
     <h3 class="tituloGraficos">
         <span id="tituloGrafico">Sua pontuação foi:</span>
     </h3>
-    <div class="graph">
+    <div style="width: 500px;" class="graph">
         <canvas id="myChartCanvas"></canvas>
     </div>
+    <div style="width: 500px;" class="graph">
+      <canvas id="myChartCanvas2"></canvas>
+  </div>
+  <div style="width: 500px;" class="graph">
+    <canvas id="myChartCanvas3"></canvas>
+</div>
+<div style="width: 500px;" class="graph">
+  <canvas id="myChartCanvas4"></canvas>
+</div>
+<div style="width: 500px;" class="graph">
+  <canvas id="myChartCanvas5"></canvas>
+</div>
     <div class="label-captura">
-        <p id="avisoCaptura" style="color: white;">Concluido</p>
+        <p id="avisoCaptura" style="color: white;">Se voce obteve 1 acerto clique aqui:</p> <br>
+        <p id="avisoCaptura" style="color: white;">Se voce obteve 2 acerto clique aqui:</p> <br>
+        <p id="avisoCaptura" style="color: white;">Se voce obteve 3 acerto clique aqui:</p> <br>
+        <p id="avisoCaptura" style="color: white;">Se voce obteve 4 acerto clique aqui:</p> <br>
+        <p id="avisoCaptura" style="color: white;">Se você acertou todas as questões, PARABÉNS, você é um verdadeiro FÃ de F1</p> <br>
     </div>
   </div>
 
@@ -101,6 +145,13 @@
 var idUsuarioVetor = []
 var nomeVetor = []
 var respostaVetor = []
+
+var resposta1 = 'não existe'
+var resposta2 = 'não existe'
+var resposta3 = 'não existe'
+var resposta4 = 'não existe'
+var resposta5 = 'não existe'
+
 function chamar_graficos(){
 fetch("/quiz/chamar_graficos", {
       method: "POST",
@@ -115,34 +166,38 @@ fetch("/quiz/chamar_graficos", {
 
       if (resposta.ok) {
         console.log(resposta);
-        resposta.json().then(json => {
-          console.log(json);
-          console.log(JSON.stringify(json));
-          console.log(json.resultadoChamar_grafico[0])
-            var grafico_lista = json.resultadoChamar_grafico[0];
-            var nome = json.resultadoChamar_grafico[0].nome
-            var resposta = json.resultadoChamar_grafico[0].resposta
-            var idUsuario = json.resultadoChamar_grafico[0].idUsuario
-            nomeVetor.push(nome);
-            respostaVetor.push(resposta);
-            idUsuarioVetor.push(idUsuario);
+        resposta.json().then(resultadoQuiz => {
+          console.log('O resultadoQuiz é:',resultadoQuiz);
+          console.log(JSON.stringify(resultadoQuiz));
+          resposta1 = resultadoQuiz.resultadoServer1;
+          resposta2 = resultadoQuiz.resultadoServer2;
+          resposta3 = resultadoQuiz.resultadoServer3;
+          resposta4 = resultadoQuiz.resultadoServer4;
+          resposta5 = resultadoQuiz.resultadoServer5;
 
+          console.log('OS valores, em ordem, são:', resposta1, resposta2, resposta3, resposta4, resposta5)
 
-        });
-      } 
+          })
+        
+      }
     })   
 }
    var timeout = setTimeout(function plotarGrafico(resposta){
+
     console.log("Iniciando plotagem do gráfico");
-    var resposta_incorreta = 5 - respostaVetor[0]
+    var resposta_incorreta1 = 5 - resposta1
+    var resposta_incorreta2 = 5 - resposta2
+    var resposta_incorreta3 = 5 - resposta3
+    var resposta_incorreta4 = 5 - resposta4
+    var resposta_incorreta5 = 5 - resposta5
 
     let label = ["Resultado:"];
     
     let dados = {
         labels: label,
         datasets: [{
-            label: "Certas",
-            data: [respostaVetor[0],resposta_incorreta],
+            label: ['Certas', 'Erradas'], 
+            data: [resposta1, resposta_incorreta1],
             backgroundColor: "green",
             borderColor: "green",
             borderWidith:1
@@ -150,13 +205,13 @@ fetch("/quiz/chamar_graficos", {
     }
     let myChart = new Chart(
         document.getElementById('myChartCanvas'),{
-            type: 'bar',
+            type: 'pie',
                 data:{
                     labels: ['Certas', 'Erradas'],
                     datasets: [{
-                        data: [respostaVetor[0],resposta_incorreta],
+                        data: [resposta1, resposta_incorreta1],
                         backgroundColor:[
-                            'blue', 'red', 'gray'],
+                            '#02021b', 'red', 'gray'],
                     },
                   ],
                 },
@@ -169,8 +224,177 @@ fetch("/quiz/chamar_graficos", {
             },
           },
         },
-   })},200)
+   }
+   
+  
+  )
+  if(resposta2 != "não existe"){
+    let label2 = ["Resultado:"];
+    
+    let dados2 = {
+        labels2: label2,
+        datasets2: [{
+            label2: ['Certas', 'Erradas'], 
+            data2: [resposta2, resposta_incorreta2],
+            backgroundColor2: "green",
+            borderColor2: "green",
+            borderWidith2:1
+        }]
+    }
+    let myChart = new Chart(
+        document.getElementById('myChartCanvas2'),{
+            type: 'pie',
+                data:{
+                    labels: ['Certas', 'Erradas'],
+                    datasets: [{
+                        data: [resposta2, resposta_incorreta2],
+                        backgroundColor:[
+                            '#02021b', 'red', 'gray'],
+                    },
+                  ],
+                },
+                options: {
+          plugins: {
+            legend: {
+              labels: {
+                color: "white",
+              },
+            },
+          },
+        },
+   }
+   
+  
+  ) 
+   } if(resposta3 != "não existe"){
+    let label3 = ["Resultado:"];
+    
+    let dados3 = {
+        labels3: label3,
+        datasets3: [{
+            label3: ['Certas', 'Erradas'], 
+            data3: [resposta3, resposta_incorreta3],
+            backgroundColor3: "green",
+            borderColor3: "green",
+            borderWidith2:1
+        }]
+    }
+    let myChart = new Chart(
+        document.getElementById('myChartCanvas3'),{
+            type: 'pie',
+                data:{
+                    labels: ['Certas', 'Erradas'],
+                    datasets: [{
+                        data: [resposta3, resposta_incorreta3],
+                        backgroundColor:[
+                            '#02021b', 'red', 'gray'],
+                    },
+                  ],
+                },
+                options: {
+          plugins: {
+            legend: {
+              labels: {
+                color: "white",
+              },
+            },
+          },
+        },
+   }
+   
+  
+  ) 
+  } if(resposta4 != "não existe"){
+    let label4 = ["Resultado:"];
 
+    let dados4 = {
+        labels4: label4,
+        datasets3: [{
+            label3: ['Certas', 'Erradas'], 
+            data3: [resposta4, resposta_incorreta4],
+            backgroundColor4: "green",
+            borderColor4: "green",
+            borderWidith4:1
+        }]
+    }
+    let myChart = new Chart(
+        document.getElementById('myChartCanvas4'),{
+            type: 'pie',
+                data:{
+                    labels: ['Certas', 'Erradas'],
+                    datasets: [{
+                        data: [resposta4, resposta_incorreta4],
+                        backgroundColor:[
+                            '#02021b', 'red', 'gray'],
+                    },
+                  ],
+                },
+                options: {
+          plugins: {
+            legend: {
+              labels: {
+                color: "white",
+              },
+            },
+          },
+        },
+   }
+   
+  
+  ) 
+
+  } if(resposta5 != "não existe"){
+    let label5 = ["Resultado:"];
+
+    let dados5 = {
+        labels5: label5,
+        datasets5: [{
+            label5: ['Certas', 'Erradas'], 
+            data5: [resposta5, resposta_incorreta5],
+            backgroundColor5: "green",
+            borderColor5: "green",
+            borderWidith5:1
+        }]
+    }
+    let myChart = new Chart(
+        document.getElementById('myChartCanvas5'),{
+            type: 'pie',
+                data:{
+                    labels: ['Certas', 'Erradas'],
+                    datasets: [{
+                        data: [resposta5, resposta_incorreta5],
+                        backgroundColor:[
+                            '#02021b', 'red', 'gray'],
+                    },
+                  ],
+                },
+                options: {
+          plugins: {
+            legend: {
+              labels: {
+                color: "white",
+              },
+            },
+          },
+        },
+   }
+   
+  
+  ) 
+  }
+}
+  
+  ,200)
+
+   
+
+
+
+   
+   function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
 
 </script>
 

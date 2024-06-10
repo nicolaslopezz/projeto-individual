@@ -16,7 +16,8 @@ function chamar_graficos(idUsuario) {
     usuario.nome as nome,
     usuario.idUsuario as idUsuario
 FROM quiz JOIN usuario ON fkUsuario = idUsuario 
- WHERE idResposta = (SELECT max(idResposta) from quiz) ;
+where idUsuario = '${idUsuario}' 
+limit 5;
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

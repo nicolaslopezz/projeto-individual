@@ -32,9 +32,51 @@ function cadastrar_resposta(req, res) {
             quizModel.chamar_graficos(idUsuario)
                 .then(
                     function (resultadoChamar_grafico) {
-                        res.json({
-                            resultadoChamar_grafico
-                        });
+                        console.log("voltei no controller com o parametro de", resultadoChamar_grafico)
+                        if(resultadoChamar_grafico.length == 1){
+                            res.json({
+                                resultadoServer1: resultadoChamar_grafico[0].resposta,
+                                resultadoServer2: 'não existe',
+                                resultadoServer3: 'não existe',
+                                resultadoServer4: 'não existe',
+                                resultadoServer5: 'não existe'
+                            })
+                        } else if(resultadoChamar_grafico.length == 2){
+                            res.json({
+                                resultadoServer1: resultadoChamar_grafico[0].resposta,
+                                resultadoServer2: resultadoChamar_grafico[1].resposta,
+                                resultadoServer3: 'não existe',
+                                resultadoServer4: 'não existe',
+                                resultadoServer5: 'não existe',
+                            })
+                        } else if(resultadoChamar_grafico.length == 3){
+                            res.json({
+                                resultadoServer1: resultadoChamar_grafico[0].resposta,
+                                resultadoServer2: resultadoChamar_grafico[1].resposta,
+                                resultadoServer3: resultadoChamar_grafico[2].resposta,
+                                resultadoServer4: 'não existe',
+                                resultadoServer5: 'não existe'
+                            })
+                        } else if(resultadoChamar_grafico.length == 4){
+                            res.json({
+                                resultadoServer1: resultadoChamar_grafico[0].resposta,
+                                resultadoServer2: resultadoChamar_grafico[1].resposta,
+                                resultadoServer3: resultadoChamar_grafico[2].resposta,
+                                resultadoServer4: resultadoChamar_grafico[3].resposta,
+                                resultadoServer5: 'não existe',
+                            })
+                        } else if(resultadoChamar_grafico.length == 5) {
+                            res.json({
+                                resultadoServer1: resultadoChamar_grafico[0].resposta,
+                                resultadoServer2: resultadoChamar_grafico[1].resposta,
+                                resultadoServer3: resultadoChamar_grafico[2].resposta,
+                                resultadoServer4: resultadoChamar_grafico[3].resposta,
+                                resultadoServer5: resultadoChamar_grafico[4].resposta,
+                            })
+                        } else {
+                            console.log("deu erro")
+                        }
+                       
                     }
                 )
         }

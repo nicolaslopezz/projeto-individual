@@ -7,161 +7,133 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AquaTech | Tempo Real</title>
-
-
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
-
     <script src="../js/sessao.js"></script>
     <script src="../js/alerta.js"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 
-<body >
+<body>
 
-    <div class="janela">
-
-        <div class="header-left dash-header">
-
-            <h1>AquaTech</h1>
-
-            <div class="hello">
-                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
-              
-            </div>
-
-          
-
-            <div class="btn-nav">
-                <h3>Aquários</h3>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./dashboard.html">
-                    <h3>Gráficos</h3>
-                </a>
-            </div>
-
-            <div class="btn-nav-white">
-                <a href="./mural.html">
-                    <h3>Mural de Avisos</h3>
-                </a>
-            </div>
-
-            <div class="btn-logout" onclick="limparSessao()">
-                <h3>Sair</h3>
-            </div>
-
+    <div class="sidebar" id="sidebar">
+        <h1>Bem vindo, fã de F1</h1>
+        <div class="btn-nav1">
+            <h3>Teste de conhecimento</h3>
         </div>
-
-        
-                <main class="quiz-container">
-                    <h1>Vamos testar seus conhecimentos?</h1>
-                    <form id="quiz-form">
-                        <div class="quiz-question">
-                            <p>1. Qual equipe venceu o campeonato de construtores em 2023?</p>
-                            <label><input type="radio" name="q1" value="Red Bull"> Red Bull</label>
-                            <label><input type="radio" name="q1" value="Mercedes"> Mercedes</label>
-                            <label><input type="radio" name="q1" value="Ferrari"> Ferrari</label>
-                            <label><input type="radio" name="q1" value="McLaren"> McLaren</label>
-                        </div>
-                        <div class="quiz-question">
-                            <p>2. Quem foi o piloto campeão de 2023?</p>
-                            <label><input type="radio" name="q2" value="Max Verstappen"> Max Verstappen</label>
-                            <label><input type="radio" name="q2" value="Lewis Hamilton"> Lewis Hamilton</label>
-                            <label><input type="radio" name="q2" value="Charles Leclerc"> Charles Leclerc</label>
-                            <label><input type="radio" name="q2" value="Sergio Perez"> Sergio Perez</label>
-                        </div>
-                        <div class="quiz-question">
-                            <p>3. Em que ano foi realizado o primeiro GP de Mônaco?</p>
-                            <label><input type="radio" name="q3" value="1929"> 1929</label>
-                            <label><input type="radio" name="q3" value="1930"> 1930</label>
-                            <label><input type="radio" name="q3" value="1931"> 1931</label>
-                            <label><input type="radio" name="q3" value="1932"> 1932</label>
-                        </div>
-                        <div class="quiz-question">
-                            <p>4. Qual o circuito mais longo da temporada de F1?</p>
-                            <label><input type="radio" name="q4" value="Spa-Francorchamps"> Spa-Francorchamps</label>
-                            <label><input type="radio" name="q4" value="Silverstone"> Silverstone</label>
-                            <label><input type="radio" name="q4" value="Monza"> Monza</label>
-                            <label><input type="radio" name="q4" value="Suzuka"> Suzuka</label>
-                        </div>
-                        <div class="quiz-question">
-                            <p>5. Quem tem o maior número de pole positions na F1?</p>
-                            <label><input type="radio" name="q5" value="Lewis Hamilton"> Lewis Hamilton</label>
-                            <label><input type="radio" name="q5" value="Michael Schumacher"> Michael Schumacher</label>
-                            <label><input type="radio" name="q5" value="Ayrton Senna"> Ayrton Senna</label>
-                            <label><input type="radio" name="q5" value="Sebastian Vettel"> Sebastian Vettel</label>
-                        </div>
-                        <button type="submit" >Enviar</button>
-                    </form>
-                    <div id="result"></div>
-                </main>
-            </div>
-
-            <div class="cards" id="resultado">
-
-            </div>
-
+        <div class="btn-nav-white">
+            <a href="./dashboard.html">
+                <h3>Resultados</h3>
+            </a>
         </div>
-
+        <div class="btn-nav-white">
+            <a href="./mural.html">
+                <h3>Game-F1</h3>
+            </a>
+        </div>
+        <div class="btn-logout" onclick="limparSessao()">
+            <h3>Sair</h3>
+        </div>
     </div>
 
-    
+    <div class="hamburger" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
 
-</body>
+    <main class="quiz-container">
+        <h1>Vamos testar seus conhecimentos?</h1>
+        <form id="quiz-form">
+            <div class="quiz-question">
+                <p>1. Qual equipe venceu o campeonato de construtores em 2023?</p>
+                <label><input type="radio" name="q1" value="Red Bull"> Red Bull</label>
+                <label><input type="radio" name="q1" value="Mercedes"> Mercedes</label>
+                <label><input type="radio" name="q1" value="Ferrari"> Ferrari</label>
+                <label><input type="radio" name="q1" value="McLaren"> McLaren</label>
+            </div>
+            <div class="quiz-question">
+                <p>2. Quem foi o piloto campeão de 2023?</p>
+                <label><input type="radio" name="q2" value="Max Verstappen"> Max Verstappen</label>
+                <label><input type="radio" name="q2" value="Lewis Hamilton"> Lewis Hamilton</label>
+                <label><input type="radio" name="q2" value="Charles Leclerc"> Charles Leclerc</label>
+                <label><input type="radio" name="q2" value="Sergio Perez"> Sergio Perez</label>
+            </div>
+            <div class="quiz-question">
+                <p>3. Em que ano foi realizado o primeiro GP de Mônaco?</p>
+                <label><input type="radio" name="q3" value="1929"> 1929</label>
+                <label><input type="radio" name="q3" value="1930"> 1930</label>
+                <label><input type="radio" name="q3" value="1931"> 1931</label>
+                <label><input type="radio" name="q3" value="1932"> 1932</label>
+            </div>
+            <div class="quiz-question">
+                <p>4. Qual o circuito mais longo da temporada de F1?</p>
+                <label><input type="radio" name="q4" value="Spa-Francorchamps"> Spa-Francorchamps</label>
+                <label><input type="radio" name="q4" value="Silverstone"> Silverstone</label>
+                <label><input type="radio" name="q4" value="Monza"> Monza</label>
+                <label><input type="radio" name="q4" value="Suzuka"> Suzuka</label>
+            </div>
+            <div class="quiz-question">
+                <p>5. Quem tem o maior número de pole positions na F1?</p>
+                <label><input type="radio" name="q5" value="Lewis Hamilton"> Lewis Hamilton</label>
+                <label><input type="radio" name="q5" value="Michael Schumacher"> Michael Schumacher</label>
+                <label><input type="radio" name="q5" value="Ayrton Senna"> Ayrton Senna</label>
+                <label><input type="radio" name="q5" value="Sebastian Vettel"> Sebastian Vettel</label>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
+        <div id="result"></div>
+    </main>
 
-<script>
+    <div class="cards" id="resultado"></div>
 
-var pontuacao = 0
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById('quiz-form');
+            const resultDiv = document.getElementById('result');
+            const respostasCorretas = {
+                q1: "Red Bull",
+                q2: "Max Verstappen",
+                q3: "1929",
+                q4: "Spa-Francorchamps",
+                q5: "Lewis Hamilton"
+            };
 
-document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById('quiz-form');
-    const resultDiv = document.getElementById('result');
-    
-    const respostasCorretas = {
-        q1: "Red Bull",
-        q2: "Max Verstappen",
-        q3: "1929",
-        q4: "Spa-Francorchamps",
-        q5: "Lewis Hamilton"
-    };
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                let pontuacao = 0; // Move this inside the event listener to reset for each submit
+                const formData = new FormData(form);
+                formData.forEach((value, key) => {
+                    if (value === respostasCorretas[key]) {
+                        pontuacao++;
+                    }
+                });
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault(); 
+                resultado.innerHTML = "QUIZ RESPONDIDO, PARABÉNS! <br> <br> <a href='./dashboard.html'>clique aqui para ver seus resultados</a>";
 
-        const formData = new FormData(form);
-
-        formData.forEach((value, key) => {
-            if (value === respostasCorretas[key]) {
-                pontuacao++;
-            }
+                fetch("/quiz/cadastrar_resposta", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        resposta: pontuacao,
+                        idUsuario: sessionStorage.ID_USUARIO
+                    }),
+                });
+            });
         });
-        
-    resultado.innerHTML = "QUIZ RESPONDIDO, PARABÉNS"
 
-        fetch("/quiz/cadastrar_resposta", {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json",
-    }, 
-    body: JSON.stringify({
-     resposta: pontuacao,
-     idUsuario: sessionStorage.ID_USUARIO   
-    }),
- })
-    });
-    
-},
-pontuacao = 0);
+        function toggleMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
 
-
-
-
-
-</script>
-
+        function limparSessao() {
+            // Coloque aqui a lógica para limpar a sessão do usuário
+            console.log("Sessão limpa");
+        }
+    </script>
+</body>
 </html>
