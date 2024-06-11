@@ -302,6 +302,7 @@ body {
   color: rgb(216, 216, 216);
   display: flex;
   justify-content: center;
+  margin-top: 100px;
 }
 
 .btn-chart {
@@ -347,6 +348,7 @@ body {
 canvas {
   width: 100% !important;
   height: 100% !important;
+ 
 }
 
 /* PAGINA DOS GRÁFICOS 2023 */
@@ -488,4 +490,86 @@ canvas {
   background-color: #ffffff;
   margin: 5px 0;
   transition: all 0.3s;
+}
+
+
+main {
+  padding: 20px;
+}
+
+.noticias {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.noticia {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 700px;
+  margin-left: 35%;
+}
+
+.noticia img {
+  width: 100%;
+  height: auto;
+}
+
+.noticia .conteudo {
+  padding: 20px;
+}
+
+.noticia h2 {
+  margin-top: 0;
+}
+
+.noticia p {
+  line-height: 1.6;
+}
+
+.noticia a {
+  display: inline-block;
+  margin-top: 10px;
+  color: #0066cc;
+  text-decoration: none;
+  border-bottom: 1px solid #0066cc;
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.noticia a:hover {
+  color: #004499;
+  border-bottom-color: #004499;
+}
+
+
+#grafico{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 280px;
+ 
+}
+
+ .qtd{
+  color: white;
+  justify-content: center;
+  margin-left: 8px;
+}
+
+.refazer h5 {
+  text-decoration: none;
+  color: white ;
+
+  margin-left: 50%;
+  margin-top: 15%;
+  font-size:larger;
+}
+
+.refazer h5:hover {
+  color: rgb(101, 101, 186); /* Cor do link ao passar o mouse */
+}
+
+.refazer a{
+  text-decoration: none;
 }

@@ -7,7 +7,7 @@
 
 <head>
 
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/f1-logo.webp" type="image/x-icon">
 
     <meta charset="UTF-8">
 
@@ -15,7 +15,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Dashboards</title>
+    <title>F1 | RESULTADOS</title>
 
 
 
@@ -83,11 +83,13 @@
     </div>
     <div class="btn-nav-white">
         <a href="./mural.html">
-            <h3>Game-F1</h3>
+            <h3>Notícias exclusivas</h3>
         </a>
     </div>
     <div class="btn-logout" onclick="limparSessao()">
+      <a style="text-decoration: none;" href="../index.html">
         <h3>Sair</h3>
+      </a>
     </div>
 </div>
 
@@ -98,36 +100,45 @@
 </div>
 
 
+<h3 class="tituloGraficos">
+   <span id="tituloGrafico">Sua pontuação foi:</span>
+  </h3>
+
+
 
   <div id="grafico">
-    <h3 class="tituloGraficos">
-        <span id="tituloGrafico">Sua pontuação foi:</span>
-    </h3>
-    <div style="width: 500px;" class="graph">
+    
+     
+   
+    <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
+      <h3 class="qtd">Primeiro quiz respondido</h3>
         <canvas id="myChartCanvas"></canvas>
     </div>
-    <div style="width: 500px;" class="graph">
+    <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
+      <h3 class="qtd">Segundo quiz respondido</h3>
       <canvas id="myChartCanvas2"></canvas>
   </div>
-  <div style="width: 500px;" class="graph">
+  <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
+    <h3 class="qtd">Terceiro quiz respondido</h3>
     <canvas id="myChartCanvas3"></canvas>
 </div>
-<div style="width: 500px;" class="graph">
+<div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
+  <h3 class="qtd">Quarto quiz  <br>respondido</h3>
   <canvas id="myChartCanvas4"></canvas>
 </div>
-<div style="width: 500px;" class="graph">
+<div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
+  <h3 class="qtd">Quinto quiz <br>respondido</h3>
   <canvas id="myChartCanvas5"></canvas>
 </div>
-    <div class="label-captura">
-        <p id="avisoCaptura" style="color: white;">Se voce obteve 1 acerto clique aqui:</p> <br>
-        <p id="avisoCaptura" style="color: white;">Se voce obteve 2 acerto clique aqui:</p> <br>
-        <p id="avisoCaptura" style="color: white;">Se voce obteve 3 acerto clique aqui:</p> <br>
-        <p id="avisoCaptura" style="color: white;">Se voce obteve 4 acerto clique aqui:</p> <br>
-        <p id="avisoCaptura" style="color: white;">Se você acertou todas as questões, PARABÉNS, você é um verdadeiro FÃ de F1</p> <br>
-    </div>
+
+
+
+  
   </div>
 
-
+  <div class="refazer">
+  <a href="cards.html"><h5>clique aqui para refazer o teste e tentar uma melhor pontuação </h5></a>
+</div>
 
 
 

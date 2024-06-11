@@ -2,11 +2,11 @@
 <html lang="pt-br">
 
 <head>
-    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/icon/f1-logo.webp" type="image/x-icon">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AquaTech | Tempo Real</title>
+    <title>F1 | TESTE DE CONHECIMENTO</title>
     <link rel="stylesheet" href="./../css/dashboards.css">
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
@@ -29,11 +29,13 @@
         </div>
         <div class="btn-nav-white">
             <a href="./mural.html">
-                <h3>Game-F1</h3>
+                <h3>Notícias exclusivas</h3>
             </a>
         </div>
         <div class="btn-logout" onclick="limparSessao()">
+            <a style="text-decoration: none;" href="../index.html">
             <h3>Sair</h3>
+        </a>
         </div>
     </div>
 
@@ -102,7 +104,7 @@
 
             form.addEventListener('submit', function (event) {
                 event.preventDefault();
-                let pontuacao = 0; // Move this inside the event listener to reset for each submit
+                let pontuacao = 0; 
                 const formData = new FormData(form);
                 formData.forEach((value, key) => {
                     if (value === respostasCorretas[key]) {
