@@ -1,74 +1,23 @@
 <!DOCTYPE html>
-
 <html lang="pt-br">
-
-
-
-
 <head>
-
     <link rel="shortcut icon" href="../assets/icon/f1-logo.webp" type="image/x-icon">
-
     <meta charset="UTF-8">
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>F1 | RESULTADOS</title>
-
-
-
-
-    
-
     <link rel="stylesheet" href="./../css/dashboards.css">
-
     <link rel="stylesheet" href="./../css/estilo.css" />
-
     <script src="../js/sessao.js"></script>
-
     <script src="./../js/alerta.js"></script>
-
-
-
-
     <link rel="preconnect" href="https://fonts.gstatic.com">
-
     <link
-
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-
         rel="stylesheet">
-
-
-
-
-    <!-- scripts do Chart.js - 2022-1 -->
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <div ></div>
-
-
-
-    <!--FONT AWESOME-->
-
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
-
 </head>
-
-
-
-
-<!-- <body onload=" atualizarFeed()"> -->
-
-
-
-
 <body onload="chamar_graficos(), timeout">
-
-
   <div class="sidebar" id="sidebar">
     <h1>Bem vindo, fã de F1</h1>
     <div class="btn-nav1">
@@ -92,71 +41,50 @@
       </a>
     </div>
 </div>
-
 <div class="hamburger" onclick="toggleMenu()">
     <div class="bar"></div>
     <div class="bar"></div>
     <div class="bar"></div>
 </div>
-
-
 <h3 class="tituloGraficos">
    <span id="tituloGrafico">Sua pontuação foi:</span>
   </h3>
-
-
-
   <div id="grafico">
-    
-     
-   
     <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
       <h3 class="qtd">Primeiro quiz respondido</h3>
         <canvas id="myChartCanvas"></canvas>
+        <p id="feedback1"></p> <!-- Adicionei o parágrafo para o feedback do primeiro quiz -->
     </div>
     <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
       <h3 class="qtd">Segundo quiz respondido</h3>
       <canvas id="myChartCanvas2"></canvas>
+      <p id="feedback2"></p> <!-- Adicionei o parágrafo para o feedback do segundo quiz -->
   </div>
   <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
     <h3 class="qtd">Terceiro quiz respondido</h3>
     <canvas id="myChartCanvas3"></canvas>
+    <p id="feedback3"></p> <!-- Adicionei o parágrafo para o feedback do terceiro quiz -->
 </div>
 <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
   <h3 class="qtd">Quarto quiz  <br>respondido</h3>
   <canvas id="myChartCanvas4"></canvas>
+  <p id="feedback4"></p> <!-- Adicionei o parágrafo para o feedback do quarto quiz -->
 </div>
 <div style="width: 200px; border: solid 3px rgb(237, 237, 237);" class="graph">
   <h3 class="qtd">Quinto quiz <br>respondido</h3>
   <canvas id="myChartCanvas5"></canvas>
+  <p id="feedback5"></p> <!-- Adicionei o parágrafo para o feedback do ultimo quiz -->
 </div>
-
-
-
-  
   </div>
-
   <div class="refazer">
   <a href="cards.html"><h5>clique aqui para refazer o teste e tentar uma melhor pontuação </h5></a>
 </div>
-
-
-
 </body>
-
-
-
-
 </html>
-
-
-
-
 <script>
 var idUsuarioVetor = []
 var nomeVetor = []
 var respostaVetor = []
-
 var resposta1 = 'não existe'
 var resposta2 = 'não existe'
 var resposta3 = 'não existe'
@@ -174,7 +102,6 @@ fetch("/quiz/chamar_graficos", {
       })
     }).then(function (resposta) {
       console.log("ESTOU NO THEN DO entrar()!")
-
       if (resposta.ok) {
         console.log(resposta);
         resposta.json().then(resultadoQuiz => {
@@ -185,227 +112,75 @@ fetch("/quiz/chamar_graficos", {
           resposta3 = resultadoQuiz.resultadoServer3;
           resposta4 = resultadoQuiz.resultadoServer4;
           resposta5 = resultadoQuiz.resultadoServer5;
-
           console.log('OS valores, em ordem, são:', resposta1, resposta2, resposta3, resposta4, resposta5)
-
           })
-        
       }
     })   
 }
-   var timeout = setTimeout(function plotarGrafico(resposta){
-
+var timeout = setTimeout(function plotarGrafico(resposta){
     console.log("Iniciando plotagem do gráfico");
     var resposta_incorreta1 = 5 - resposta1
     var resposta_incorreta2 = 5 - resposta2
     var resposta_incorreta3 = 5 - resposta3
     var resposta_incorreta4 = 5 - resposta4
     var resposta_incorreta5 = 5 - resposta5
-
-    let label = ["Resultado:"];
-    
-    let dados = {
-        labels: label,
-        datasets: [{
-            label: ['Certas', 'Erradas'], 
-            data: [resposta1, resposta_incorreta1],
-            backgroundColor: "green",
-            borderColor: "green",
-            borderWidith:1
-        }]
-    }
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas'),{
-            type: 'pie',
-                data:{
+    function plotarUmGrafico(canvasId, respostaCorreta, respostaIncorreta, feedbackId) {
+        new Chart(
+            document.getElementById(canvasId), {
+                type: 'pie',
+                data: {
                     labels: ['Certas', 'Erradas'],
                     datasets: [{
-                        data: [resposta1, resposta_incorreta1],
-                        backgroundColor:[
-                            '#02021b', 'red', 'gray'],
-                    },
-                  ],
+                        data: [respostaCorreta, respostaIncorreta],
+                        backgroundColor: ['#02021b', 'red', 'gray'],
+                    }],
                 },
                 options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: "white",
-              },
-            },
-          },
-        },
-   }
-   
-  
-  )
-  if(resposta2 != "não existe"){
-    let label2 = ["Resultado:"];
-    
-    let dados2 = {
-        labels2: label2,
-        datasets2: [{
-            label2: ['Certas', 'Erradas'], 
-            data2: [resposta2, resposta_incorreta2],
-            backgroundColor2: "green",
-            borderColor2: "green",
-            borderWidith2:1
-        }]
-    }
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas2'),{
-            type: 'pie',
-                data:{
-                    labels: ['Certas', 'Erradas'],
-                    datasets: [{
-                        data: [resposta2, resposta_incorreta2],
-                        backgroundColor:[
-                            '#02021b', 'red', 'gray'],
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: "white",
+                            },
+                        },
                     },
-                  ],
                 },
-                options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: "white",
-              },
-            },
-          },
-        },
-   }
-   
-  
-  ) 
-   } if(resposta3 != "não existe"){
-    let label3 = ["Resultado:"];
-    
-    let dados3 = {
-        labels3: label3,
-        datasets3: [{
-            label3: ['Certas', 'Erradas'], 
-            data3: [resposta3, resposta_incorreta3],
-            backgroundColor3: "green",
-            borderColor3: "green",
-            borderWidith2:1
-        }]
-    }
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas3'),{
-            type: 'pie',
-                data:{
-                    labels: ['Certas', 'Erradas'],
-                    datasets: [{
-                        data: [resposta3, resposta_incorreta3],
-                        backgroundColor:[
-                            '#02021b', 'red', 'gray'],
-                    },
-                  ],
-                },
-                options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: "white",
-              },
-            },
-          },
-        },
-   }
-   
-  
-  ) 
-  } if(resposta4 != "não existe"){
-    let label4 = ["Resultado:"];
+            }
+        );
 
-    let dados4 = {
-        labels4: label4,
-        datasets3: [{
-            label3: ['Certas', 'Erradas'], 
-            data3: [resposta4, resposta_incorreta4],
-            backgroundColor4: "green",
-            borderColor4: "green",
-            borderWidith4:1
-        }]
-    }
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas4'),{
-            type: 'pie',
-                data:{
-                    labels: ['Certas', 'Erradas'],
-                    datasets: [{
-                        data: [resposta4, resposta_incorreta4],
-                        backgroundColor:[
-                            '#02021b', 'red', 'gray'],
-                    },
-                  ],
-                },
-                options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: "white",
-              },
-            },
-          },
-        },
-   }
-   
-  
-  ) 
-
-  } if(resposta5 != "não existe"){
-    let label5 = ["Resultado:"];
-
-    let dados5 = {
-        labels5: label5,
-        datasets5: [{
-            label5: ['Certas', 'Erradas'], 
-            data5: [resposta5, resposta_incorreta5],
-            backgroundColor5: "green",
-            borderColor5: "green",
-            borderWidith5:1
-        }]
-    }
-    let myChart = new Chart(
-        document.getElementById('myChartCanvas5'),{
-            type: 'pie',
-                data:{
-                    labels: ['Certas', 'Erradas'],
-                    datasets: [{
-                        data: [resposta5, resposta_incorreta5],
-                        backgroundColor:[
-                            '#02021b', 'red', 'gray'],
-                    },
-                  ],
-                },
-                options: {
-          plugins: {
-            legend: {
-              labels: {
-                color: "white",
-              },
-            },
-          },
-        },
-   }
-   
-  
-  ) 
-  }
-}
-  
-  ,200)
-
-   
-
-
-
-   
-   function toggleMenu() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('open');
+         // Criei duas variaveis, uma para calcular a porcentagem e a outra apenas um parametro de mensagem vazia para ir incrementando
+        let porcentagem = (respostaCorreta / 5) * 100;
+        let mensagem = "";
+        if (porcentagem == 100) {
+            mensagem = `Parabéns! Você acertou todas as perguntas: 100%!`;
+        } else if (porcentagem >= 60) {
+            mensagem = `Você ficou acima da média com ${porcentagem}%.`;
+        } else {
+            mensagem = `Você ficou abaixo da média com ${porcentagem}%.`;
         }
+        // Adicionei a mensagem no elemento de feedback correspondente
+        document.getElementById(feedbackId).innerText = mensagem;
+    }
 
+
+    // Chama a validação e a função para cada pergunta existente
+    if (resposta1 != "não existe") {
+        plotarUmGrafico('myChartCanvas', resposta1, resposta_incorreta1, 'feedback1');
+    }
+    if (resposta2 != "não existe") {
+        plotarUmGrafico('myChartCanvas2', resposta2, resposta_incorreta2, 'feedback2');
+    }
+    if (resposta3 != "não existe") {
+        plotarUmGrafico('myChartCanvas3', resposta3, resposta_incorreta3, 'feedback3');
+    }
+    if (resposta4 != "não existe") {
+        plotarUmGrafico('myChartCanvas4', resposta4, resposta_incorreta4, 'feedback4');
+    }
+    if (resposta5 != "não existe") {
+        plotarUmGrafico('myChartCanvas5', resposta5, resposta_incorreta5, 'feedback5');
+    }
+}, 200)
+function toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+}
 </script>
-
