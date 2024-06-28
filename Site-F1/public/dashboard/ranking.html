@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="./../css/estilo.css" />
     <script src="../js/sessao.js"></script>
     <script src="./../js/alerta.js"></script>
+
+     <!-- Fontes e ícones -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link
         href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
@@ -18,6 +20,7 @@
     <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
 </head>
 <body>
+     <!-- Barra lateral de navegação -->
   <div class="sidebar" id="sidebar">
     <h1>Bem vindo, fã de F1</h1>
     <div class="btn-nav1">
@@ -46,6 +49,7 @@
       </a>
     </div>
   </div>
+    <!-- Botão de menu hambúrguer -->
   <div class="hamburger" onclick="toggleMenu()">
     <div class="bar"></div>
     <div class="bar"></div>
@@ -55,16 +59,21 @@
     <span id="tituloRanking">Ranking dos melhores jogadores:</span>
   </h3>
   <div id="ranking">
+    <!-- Tabela estilizada com 80% de largura e centralizada na página -->
     <table style="width: 80%; margin: auto; color: white; border-collapse: collapse;">
+          <!-- Cabeçalho da tabela -->
       <thead>
+         <!-- Linha do cabeçalho com fundo de cor  -->
         <tr style="background-color: #02021b;">
+               <!-- Colunas do cabeçalho com preenchimento e borda -->
           <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Posição</th>
           <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Usuário</th>
           <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Pontuação</th>
         </tr>
       </thead>
+       <!-- Corpo da tabela -->
       <tbody>
-       
+        <!-- As linhas dos dados serão inseridas aqui após a criação da nova tabela no banco de dados-->
       </tbody>
     </table>
   </div>
