@@ -573,3 +573,12 @@ main {
 .refazer a{
   text-decoration: none;
 }
+
+#tituloRanking{
+  color: white;
+  margin-left: 85vh;
+}
+
+#ranking{
+  margin-left: 20vh;
+}

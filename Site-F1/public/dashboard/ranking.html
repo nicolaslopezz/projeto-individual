@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="shortcut icon" href="../assets/icon/f1-logo.webp" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F1 | RANKING</title>
+    <link rel="stylesheet" href="./../css/dashboards.css">
+    <link rel="stylesheet" href="./../css/estilo.css" />
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="sidebar" id="sidebar">
+    <h1>Bem vindo, fã de F1</h1>
+    <div class="btn-nav1">
+      <a href="./cards.html">
+        <h3>Teste de conhecimento</h3>
+      </a>
+    </div>
+    <div class="btn-nav-white">
+        <a href="./dashboard.html">
+            <h3>Resultados</h3>
+        </a>
+    </div>
+    <div class="btn-nav-white">
+        <a href="./mural.html">
+            <h3>Notícias exclusivas</h3>
+        </a>
+    </div>
+    <div class="btn-nav-white">
+        <a href="./mural.html">
+            <h3>Ranking de pontuação</h3>
+        </a>
+    </div>
+    <div class="btn-logout" onclick="limparSessao()">
+      <a style="text-decoration: none;" href="../index.html">
+        <h3>Sair</h3>
+      </a>
+    </div>
+  </div>
+  <div class="hamburger" onclick="toggleMenu()">
+    <div class="bar"></div>
+    <div class="bar"></div>
+    <div class="bar"></div>
+  </div>
+  <h3 class="tituloRanking">
+    <span id="tituloRanking">Ranking dos melhores jogadores:</span>
+  </h3>
+  <div id="ranking">
+    <table style="width: 80%; margin: auto; color: white; border-collapse: collapse;">
+      <thead>
+        <tr style="background-color: #02021b;">
+          <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Posição</th>
+          <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Usuário</th>
+          <th style="padding: 10px; border: solid 3px rgb(237, 237, 237);">Pontuação</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+      </tbody>
+    </table>
+  </div>
+  <div class="refazer">
+    <a href="cards.html"><h5>Clique aqui para tentar uma melhor pontuação</h5></a>
+  </div>
+</body>
+</html>
+
+
+<script>function toggleMenu() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('open');
+}
+
+</script>
