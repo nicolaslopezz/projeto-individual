@@ -155,7 +155,7 @@ var timeout = setTimeout(function plotarGrafico(resposta){
         } else if (porcentagem >= 60) {
             mensagem = `Você ficou acima da média com ${porcentagem}%.`;
         } else {
-            mensagem = `Você ficou abaixo da média com ${porcentagem}%.`;
+            mensagem = ` Você ficou abaixo da média com ${porcentagem}%. `;
         }
         // Adicionei a mensagem no elemento de feedback correspondente
         document.getElementById(feedbackId).innerText = mensagem;
