@@ -22,7 +22,21 @@ function cadastrar(nome, email, senha,  cpf) {
     return database.executar(instrucaoSql);
 }
 
+function ranking() {
+    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():",);
+    var instrucaoSql = `
+    SELECT u.nome, q.resposta FROM usuario u
+JOIN (SELECT fkUsuario, 
+        MAX(resposta) AS resposta FROM quiz GROUP BY 
+        fkUsuario) q ON u.idUsuario = q.fkUsuario
+ORDER BY resposta ASC;
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    ranking
 };

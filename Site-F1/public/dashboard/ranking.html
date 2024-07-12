@@ -58,7 +58,7 @@
   <h3 class="tituloRanking">
     <span id="tituloRanking">Ranking dos melhores jogadores:</span>
   </h3>
-  <div id="ranking">
+  <div class="ranking" id="ranking">
     <!-- Tabela estilizada com 80% de largura e centralizada na página -->
     <table style="width: 80%; margin: auto; color: white; border-collapse: collapse;">
           <!-- Cabeçalho da tabela -->
@@ -90,5 +90,32 @@ function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('open');
 }
+
+rankingN() //Declarei a função do ranking
+function rankingN()
+{
+  fetch(`/usuarios/ranking`, {cache: 'no-store'}).then(function (response){
+            if (response.ok){
+                response.json().then(function (resposta){
+                    resposta.reverse();
+                    rankingGeral(resposta); // aqui puxei a função do ranking geral com o for
+                });
+            } else {
+                console.error(`Ranking errado`) // Mensagem caso a função não passe pelo for caia nesse else
+            }
+        })
+            .catch(function (error){
+                console.error(`Rankinh errado${error.message}`)
+            });
+}
+
+function rankingGeral(resposta){ // criei a função para pegar o ranking geral junto com o for para ir atualizando
+        for(i = 0; i < resposta.length; i++){
+            let rankingPronto= resposta[i];
+            ranking.innerHTML += `<div class="ranking"> <p> <span> ${i + 1} - </span> <b style="color: rgb(989, 22, 144);">${rankingPronto.nome}</b>: <span> ${rankingPronto.resposta} </span> </p></div>` 
+        }
+    }
+ 
+
 
 </script>
