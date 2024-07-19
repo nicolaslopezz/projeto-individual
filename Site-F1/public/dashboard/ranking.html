@@ -72,7 +72,7 @@
         </tr>
       </thead>
        <!-- Corpo da tabela -->
-      <tbody>
+      <tbody id="ranking-body">
         <!-- As linhas dos dados serão inseridas aqui após a criação da nova tabela no banco de dados-->
       </tbody>
     </table>
@@ -85,37 +85,44 @@
 
 
 <script>
-
 function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     sidebar.classList.toggle('open');
 }
 
-rankingN() //Declarei a função do ranking
-function rankingN()
-{
-  fetch(`/usuarios/ranking`, {cache: 'no-store'}).then(function (response){
-            if (response.ok){
-                response.json().then(function (resposta){
+rankingN(); // Declarei a função do ranking
+
+function rankingN() {
+    fetch(`/usuarios/ranking`, {cache: 'no-store'})
+        .then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
                     resposta.reverse();
                     rankingGeral(resposta); // aqui puxei a função do ranking geral com o for
                 });
             } else {
-                console.error(`Ranking errado`) // Mensagem caso a função não passe pelo for caia nesse else
+                console.error(`Ranking errado`); // Mensagem caso a função não passe pelo for caia nesse else
             }
         })
-            .catch(function (error){
-                console.error(`Rankinh errado${error.message}`)
-            });
+        .catch(function (error) {
+            console.error(`Ranking errado: ${error.message}`);
+        });
 }
 
-function rankingGeral(resposta){ // criei a função para pegar o ranking geral junto com o for para ir atualizando
-        for(i = 0; i < resposta.length; i++){
-            let rankingPronto= resposta[i];
-            ranking.innerHTML += `<div class="ranking"> <p> <span> ${i + 1} - </span> <b style="color: rgb(989, 22, 144);">${rankingPronto.nome}</b>: <span> ${rankingPronto.resposta} </span> </p></div>` 
-        }
+function rankingGeral(resposta) { // Criei a função para pegar o ranking geral junto com o for para ir atualizando
+    const rankingBody = document.getElementById('ranking-body');
+    rankingBody.innerHTML = ''; // Limpa o corpo da tabela antes de inserir novos dados
+
+    for (let i = 0; i < resposta.length; i++) {
+        let rankingPronto = resposta[i];
+        rankingBody.innerHTML += `
+            <tr>
+                <td style="padding: 10px; border: solid 3px rgb(237, 237, 237);">${i + 1}</td>
+                <td style="padding: 10px; border: solid 3px rgb(237, 237, 237); color: rgb(255, 0, 0);">${rankingPronto.nome}</td>
+                <td style="padding: 10px; border: solid 3px rgb(237, 237, 237);">${rankingPronto.resposta}</td>
+            </tr>
+        `;
     }
- 
-
-
+}
 </script>
+
