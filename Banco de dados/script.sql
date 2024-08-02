@@ -1,4 +1,4 @@
-create database projetoindividual;
+
 use projetoindividual;
 
 
@@ -26,17 +26,26 @@ FROM quiz JOIN usuario ON fkUsuario = idUsuario
 where idUsuario = idUsuario
 limit 5;
 
-
-CREATE TABLE ranking (
-    idRanking INT PRIMARY KEY AUTO_INCREMENT,
+CREATE TABLE noticia (
+    idNoticia INT PRIMARY KEY AUTO_INCREMENT,
+    visualizadas INT,
+    naoVisualizadas INT,
     fkUsuario INT,
-    acertos INT,
     FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario)
 );
 
-SELECT usuario.nome AS nome,
-    ranking.acertos AS acertos
-FROM ranking
-JOIN usuario ON ranking.fkUsuario = usuario.idUsuario
-ORDER BY ranking.acertos DESC
-LIMIT 10;
+
+
+
+
+select * from noticia;
+
+
+
+
+SELECT 
+    noticia.visualizadas AS vizualização,
+    noticia.naoVisualizadas AS naoVisualizadas,
+    usuario.nome AS nomeUsuario
+FROM noticia
+JOIN usuario ON noticia.fkUsuario = usuario.idUsuario;
