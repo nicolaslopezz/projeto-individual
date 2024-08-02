@@ -19,7 +19,7 @@
         rel="stylesheet">
 </head>
 
-<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+<body >
 
    
     <div class="sidebar" id="sidebar">
@@ -39,6 +39,11 @@
                 <h3>Notícias exclusivas</h3>
             </a>
         </div>
+        <div class="btn-nav-white">
+            <a href="./ranking.html">
+                <h3>Ranking</h3>
+            </a>
+        </div>
         <div class="btn-logout" onclick="limparSessao()">
             <a style="text-decoration: none;" href="../index.html">
             <h3>Sair</h3>
@@ -55,30 +60,42 @@
 
       <main>
         <section class="noticias">
-          <article class="noticia">
-            <img src="../imagens/max-verstappen-f1-1920x1080-13972.jpeg" alt="Notícia 1">
-            <div class="conteudo">
-              <h2>Verstappen sobrevive ao caos e vence corrida maluca no GP do Canadá de Fórmula 1</h2>
-              <p>O caos era esperado, e ele veio, mas o salseiro trouxe neste domingo (9) a melhor corrida da temporada 2024 da Fórmula 1. A água no chope, por assim dizer, é que o vencedor foi novamente Max Verstappen, porém o holandês precisou contar com a ajudinha do safety-car para assumir a liderança e ditar o ritmo.</p>
-              <p class="texto-completo" id="texto1">É claro que a chuva roubou a cena, e é claro que não faltou confusão ao longo da prova, a começar pelo pequeno enrosco de Sergio Pérez e Pierre Gasly, porém nada que forçasse a entrada do safety-car. O carro de segurança, contudo, deu o ar da graça em dois momentos: primeiro com Logan Sargeant e, depois, num erro de Carlos Sainz que destruiu a bela corrida de Alexander Albon.
-                Mas o que contou mesmo foi o momento das paradas — e a sorte, que dessa vez sorriu para Verstappen no instante da primeira intervenção sob bandeira amarela. Àquela altura, era Lando Norris o líder e incrivelmente mais rápido, com 11s de vantagem sobre o neerlandês, porém a janela abriu no momento para obrigar Lando a ter de dar mais uma volta na pista.
-              </p>
-              <a href="javascript:void(0);" onclick="mostrarTexto('texto1', this)">Leia mais</a>
-            </div>
-          </article>
-          <article class="noticia">
-            <img src="../imagens/hamilton.webp" alt="Notícia 2">
-            <div class="conteudo">
-              <h2>Hamilton lamenta desempenho no Canadá: “Uma das minhas piores corridas”</h2>
-              <p>Lewis Hamilton conseguiu seu melhor resultado de 2024 durante o GP do Canadá, que aconteceu neste domingo (9), mas ainda assim não está contente com o desempenho que apresentou no Circuito Gilles Villeneuve. Depois de flertar com o pódio e cruzar a linha de chegada apenas em quarto, o heptacampeão admitiu que fez uma das piores corridas de sua carreira.</p>
-              <p class="texto-completo" id="texto2">Os problemas de Hamilton apareceram já no sábado, quando se colocou como forte candidato à pole, mas não conseguiu ir além do sétimo lugar no Q3. Na corrida, o piloto ficou muito tempo preso atrás de Fernando Alonso e só superou o bicampeão após as paradas nos boxes. Nas últimas voltas, Hamilton se aproveitou da briga entre George Russell e Oscar Piastri e conseguiu subir para o terceiro lugar. No penúltimo giro, no entanto, seu companheiro de Mercedes foi capaz de dar o troco para ficar com o último lugar no pódio.
-                Embora tenha reconhecido que a Mercedes entregou um equipamento competitivo para a etapa no Canadá, Lewis admitiu que não conseguiu entregar uma boa performance ao longo da prova. 
-                - Foi um fim de semana em que, pessoalmente, não consegui ter um bom desempenho.  Algumas outras coisas aconteceram ontem, mas hoje foi uma das minhas piores corridas. Preciso entender o que aconteceu - apontou Hamilton.
-                - Mas agradeço a todos na fábrica por trazerem um carro que nos permite brigar por boas posições. Tínhamos um carro capaz de vencer neste fim de semana - finalizou o #44.</p>
-              <a href="javascript:void(0);" onclick="mostrarTexto('texto2', this)">Leia mais</a>
-            </div>
-          </article>
-        </section>
+            <!-- Notícia 1 -->
+            <article class="noticia">
+              <img src="../imagens/max-verstappen-f1-1920x1080-13972.jpeg" alt="Notícia 1">
+              <div class="conteudo">
+                <h2>Verstappen sobrevive ao caos e vence corrida maluca no GP do Canadá de Fórmula 1</h2>
+                <p>O caos era esperado, e ele veio, mas o salseiro trouxe neste domingo (9) a melhor corrida da temporada 2024 da Fórmula 1. A água no chope, por assim dizer, é que o vencedor foi novamente Max Verstappen, porém o holandês precisou contar com a ajudinha do safety-car para assumir a liderança e ditar o ritmo.</p>
+                <p class="texto-completo" id="texto1">É claro que a chuva roubou a cena, e é claro que não faltou confusão ao longo da prova, a começar pelo pequeno enrosco de Sergio Pérez e Pierre Gasly, porém nada que forçasse a entrada do safety-car. O carro de segurança, contudo, deu o ar da graça em dois momentos: primeiro com Logan Sargeant e, depois, num erro de Carlos Sainz que destruiu a bela corrida de Alexander Albon.
+                  Mas o que contou mesmo foi o momento das paradas — e a sorte, que dessa vez sorriu para Verstappen no instante da primeira intervenção sob bandeira amarela. Àquela altura, era Lando Norris o líder e incrivelmente mais rápido, com 11s de vantagem sobre o neerlandês, porém a janela abriu no momento para obrigar Lando a ter de dar mais uma volta na pista.
+                </p>
+                <a href="javascript:void(0);" onclick="mostrarTexto('texto1', this)">Leia mais</a>
+                <label><input type="radio" name="noticia1" value="1">Notícia lida</label> 
+              </div>
+            </article>
+          
+            <!-- Notícia 2 -->
+            <article class="noticia">
+              <img src="../imagens/hamilton.webp" alt="Notícia 2">
+              <div class="conteudo">
+                <h2>Hamilton lamenta desempenho no Canadá: “Uma das minhas piores corridas”</h2>
+                <p>Lewis Hamilton conseguiu seu melhor resultado de 2024 durante o GP do Canadá, que aconteceu neste domingo (9), mas ainda assim não está contente com o desempenho que apresentou no Circuito Gilles Villeneuve. Depois de flertar com o pódio e cruzar a linha de chegada apenas em quarto, o heptacampeão admitiu que fez uma das piores corridas de sua carreira.</p>
+                <p class="texto-completo" id="texto2">Os problemas de Hamilton apareceram já no sábado, quando se colocou como forte candidato à pole, mas não conseguiu ir além do sétimo lugar no Q3. Na corrida, o piloto ficou muito tempo preso atrás de Fernando Alonso e só superou o bicampeão após as paradas nos boxes. Nas últimas voltas, Hamilton se aproveitou da briga entre George Russell e Oscar Piastri e conseguiu subir para o terceiro lugar. No penúltimo giro, no entanto, seu companheiro de Mercedes foi capaz de dar o troco para ficar com o último lugar no pódio.
+                  Embora tenha reconhecido que a Mercedes entregou um equipamento competitivo para a etapa no Canadá, Lewis admitiu que não conseguiu entregar uma boa performance ao longo da prova. 
+                  - Foi um fim de semana em que, pessoalmente, não consegui ter um bom desempenho.  Algumas outras coisas aconteceram ontem, mas hoje foi uma das minhas piores corridas. Preciso entender o que aconteceu - apontou Hamilton.
+                  - Mas agradeço a todos na fábrica por trazerem um carro que nos permite brigar por boas posições. Tínhamos um carro capaz de vencer neste fim de semana - finalizou o #44.</p>
+                <a href="javascript:void(0);" onclick="mostrarTexto('texto2', this)">Leia mais</a>
+                <label><input type="radio" name="noticia2" value="1">Notícia lida</label> 
+              </div>
+            </article>
+          
+            <div class="ler">
+            <p style="color: white; margin-left: 50%;">Voce leu 1 noticia</p>
+        </div>
+          
+            
+          </section>
+          
       </main>
     
 
@@ -90,6 +107,56 @@
 </html>
 
 <script>
+
+
+function noticias(){
+    var noticias_lidas1 = document.querySelector('[name = "noticia1"]: checked ') // Essa linha vai analisar o que foi marcado pelo usuario e guardar a informação futuramente
+
+    var noticias_lidas2 = document.querySelector('[name = "noticia2"]: checked ') // Essa linha vai analisar o que foi marcado pelo usuario e guardar a informação futuramente
+
+    var visualizacoes = 0
+    var naoVisualizadas = 2
+
+    if(noticias_lidas1 == 1 ){ // criei uma validação para computar as visualizacoes
+        visualizacoes ++
+        naoVisualizadas --
+    }
+
+    if(noticias_lidas2 == 1 ){ // criei uma validação para computar as visualizacoes
+        visualizacoes ++
+        naoVisualizadas --
+    }
+
+
+
+    fetch('/usuarios/noticias',
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    idUsuarioServer: sessionStorage.ID_USUARIO,
+                    visualizadasServer: visualizacoes,
+                    naoVisualizadasServer: naoVisualizadas,
+                   
+                })
+            }
+        )
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 function mostrarTexto(id, elemento) {
       var texto = document.getElementById(id);
@@ -116,8 +183,8 @@ function mostrarTexto(id, elemento) {
 
 
     
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-    b_cpf.innerHTML = sessionStorage.CPF;
+    //  b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+    // b_cpf.innerHTML = sessionStorage.CPF;
 
     function limparFormulario() {
         document.getElementById("form_postagem").reset();

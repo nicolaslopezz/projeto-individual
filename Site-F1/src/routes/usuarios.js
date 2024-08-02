@@ -16,4 +16,8 @@ router.get("/ranking", function(req, res){
     usuarioController.ranking(req, res);
 })
 
+router.post("/noticias", function (req, res) {
+    usuarioController.noticias(req, res);
+}); // Criando a rota para as noticias 
+
 module.exports = router;

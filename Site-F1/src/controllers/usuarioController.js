@@ -109,8 +109,36 @@ function ranking(req, res){
 }
 
 
+function noticias(req, res){
+    var idUsuario = req.body.idUsuarioServer;
+    var visualizacoes = req.body.visualizadasServer;
+    var naoVisualizadas = req.body.naoVisualizadasServer;
+    
+
+    usuarioModel.noticias(visualizacoes, naoVisualizadas,  idUsuario )
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+
+}
+
+
+
+
 module.exports = {
     autenticar,
     cadastrar,
-    ranking  //Definição para puxar a função
+    ranking, //Definição para puxar a função
+    noticias  //Definição para puxar a função
 }

@@ -35,8 +35,18 @@ ORDER BY resposta ASC;
     return database.executar(instrucaoSql);
 }
 
+function noticias(visualizacoes, naoVisualizadas, idUsuario) {
+    var instrucaoSql = `
+        INSERT INTO noticia (fkUsuario, visualizadas, naoVisualizadas)
+        VALUES (${idUsuario}, ${visualizacoes}, ${naoVisualizadas});
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    ranking
+    ranking, 
+    noticias
 };
